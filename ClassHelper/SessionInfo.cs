@@ -8,9 +8,7 @@ namespace MayaGameLauncher.ClassHelper
 {
     public static class SessionInfo
     {
-        public static string CurrentUserName { get; set; }
         public static int CurrentUserID { get; set; }
-        //public static decimal CurrentBalance { get; set; }
 
             private static decimal _currentBalance;
 
@@ -33,5 +31,29 @@ namespace MayaGameLauncher.ClassHelper
             {
                 public decimal NewBalance { get; set; }
             }
+
+        private static string _currentUserName;
+        public static string CurrentUserName
+        {
+            get { return _currentUserName; }
+            set
+            {
+                if (_currentUserName != value)
+                {
+                    _currentUserName = value;
+                    OnUserNameChanged?.Invoke(null, new UserNameChangedEventArgs { NewUserName = _currentUserName });
+                }
+            }
         }
+
+        public static event EventHandler<UserNameChangedEventArgs> OnUserNameChanged;
+
+        public class UserNameChangedEventArgs : EventArgs
+        {
+            public string NewUserName { get; set; }
+        }
+
+
+
+    }
 }

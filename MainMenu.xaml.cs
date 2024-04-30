@@ -35,6 +35,7 @@ namespace MayaGameLauncher
             //mediaPlayer.Play();
 
             Tb_UserName.Text = SessionInfo.CurrentUserName;
+            SessionInfo.OnUserNameChanged += UpdateUserName;
             Tb_Balance_Amount.Text = SessionInfo.CurrentBalance.ToString(); // удалить?
             SessionInfo.OnBalanceChanged += SessionInfo_OnBalanceChanged;
 
@@ -53,6 +54,13 @@ namespace MayaGameLauncher
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+
+        private void UpdateUserName(object sender, SessionInfo.UserNameChangedEventArgs e)
+        {
+            Dispatcher.Invoke(() => {
+                Tb_UserName.Text = e.NewUserName;
+            });
         }
 
         private void Window_Closed(object sender, EventArgs e) // ??????????????????????????????????????????????????????????
