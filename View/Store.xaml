@@ -6,11 +6,31 @@
              xmlns:local="clr-namespace:MayaGameLauncher.View"
              xmlns:vm="clr-namespace:MayaGameLauncher.ViewModel"
              mc:Ignorable="d" 
-            d:DesignHeight="600" d:DesignWidth="622" Style="{StaticResource Page_Style}">
-    
+            d:DesignHeight="600" d:DesignWidth="800" Style="{StaticResource Page_Style}">
+
     <UserControl.DataContext>
         <vm:StoreVM/>
     </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <Style x:Key="ListViewHiddenScrollbar" TargetType="ListView">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListView">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}">
+                            <ScrollViewer Focusable="false"
+                                      HorizontalScrollBarVisibility="Hidden" 
+                                      VerticalScrollBarVisibility="Hidden">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
 
     <Grid>
         <Border CornerRadius="0 20 20 0">
@@ -20,26 +40,31 @@
                   Background="#07000000"
                   BorderThickness="0 2 0 2"
                   d:ItemsSource="{d:SampleData ItemCount=5}"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2" Margin="0,0,0,0"
+                  Style="{StaticResource ListViewHiddenScrollbar}"
+                  Grid.ColumnSpan="2" Margin="0,0,0,0"
                   SelectionChanged="LvService_SelectionChanged" BorderBrush="#FBFFFFFF" Foreground="Black">
 
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel/>
+                    <WrapPanel Width="800"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="Gray"
+                    <Border 
+                            CornerRadius="20"
                             BorderThickness="2"
-                            Width="250"
+                            Width="340"
                             Height="350"
-                            Margin="16"
-                            CornerRadius="8" Background="White">
+                            Margin="15">
+                        <Border.Background>
+                            <ImageBrush ImageSource="/Sources/back.jpg"
+                                Stretch="None"/>
+                        </Border.Background>
                         <StackPanel>
-                            <Image Height="180"
-                                   Width="174" 
+                            <Image Height="210"
+                                   Width="257" 
                                    Margin="8">
                                 <Image.Source>
                                     <Binding Path ="GamePoster">
@@ -50,35 +75,37 @@
                             <TextBlock Text="{Binding Title}"
                                        FontSize="16"
                                        FontWeight="Bold"
-                                       Margin="5 3"
+                                       Margin="10"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        Style="{StaticResource Text_Style}"
-                                       Foreground="Black"/>
+                                       Foreground="White"/>
 
                             <TextBlock Text="{Binding Price}"
-                                       FontSize="14"
-                                       Margin="5 3"
+                                       FontSize="15"
+                                       FontWeight="SemiBold"
+                                       Margin="-5"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
                                        Style="{StaticResource Text_Style}"
-                                        Foreground="Black"/>
+                                        Foreground="White"/>
                             <TextBlock Text="{Binding Description}"
                                        FontSize="12"
-                                       Margin="15"
+                                       TextAlignment="Center"
+                                       Margin="10"
                                        TextWrapping="Wrap"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
                                        Style="{StaticResource Text_Style}"
-                                       Foreground="Black"/>
+                                       Foreground="White"/>
 
                             <TextBlock Text="{Binding PcRequirements}"
-                                        FontSize="12"
+                                        FontSize="10"
                                         Margin="0"
                                         TextWrapping="Wrap"
                                        VerticalAlignment="Center"
                                         HorizontalAlignment="Center" Style="{StaticResource Text_Style}"
-                                        Foreground="Black"/>
+                                        Foreground="White"/>
 
 
                         </StackPanel>
