@@ -28,10 +28,10 @@ namespace MayaGameLauncher.View
 
         private void GetListService()
         {
-            LvService.ItemsSource = ClassHelper.EF.Context.Game.ToList();
+            LvStore.ItemsSource = ClassHelper.EF.Context.Game.ToList();
         }
 
-        private void LvService_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void LvStore_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
