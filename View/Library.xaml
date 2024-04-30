@@ -109,7 +109,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Border Name="BtnDownload" Grid.Column="0" Height="20" Width="75" Margin="680 400 0 0"
+        <Border Name="BtnDownload" Grid.Column="0" Height="20" Width="75" Margin="580 560 0 0"
 BorderThickness="1" Background="#FF0E3A59">
             <Border.Style>
                 <Style TargetType="{x:Type Border}">
