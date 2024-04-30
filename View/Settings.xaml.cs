@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MayaGameLauncher.ClassHelper;
 using System.Text.RegularExpressions;
+using MayaGameLauncher.DB;
 
 namespace MayaGameLauncher.View
 {
@@ -31,6 +32,50 @@ namespace MayaGameLauncher.View
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            MessageBox.Show("Настройки успешно сохранены.");
+        }
+
+        private void SavePasswordButton_Click(object sender, RoutedEventArgs e)
+        {
+            var newPassword = NewPasswordBox.Password;
+            var user = EF.Context.User.FirstOrDefault(u => u.ID == SessionInfo.CurrentUserID);
+
+            // Проверка нового пароля на минимальную длину
+            if (newPassword.Length < 6)
+            {
+                MessageBox.Show("Пароль должен быть длиннее 5 символов.");
+                return;
+            }
+
+            if (user != null)
+            {
+                // Проверка, что новый пароль отличается от текущего
+                if (user.Password == newPassword)
+                {
+                    MessageBox.Show("Новый пароль должен отличаться от старого.");
+                    return;
+                }
+
+                // Запрос подтверждения на изменение пароля
+                var result = MessageBox.Show("Вы точно хотите сменить пароль?", "Подтверждение смены пароля", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    // Обновление пароля пользователя
+                    user.Password = newPassword;
+                    ClassHelper.EF.Context.SaveChanges();
+                    MessageBox.Show("Пароль успешно изменен.");
+                }
+                else
+                {
+                    // Пользователь отменил смену пароля
+                    MessageBox.Show("Смена пароля отменена.");
+                }
+            }
+        }
+
+        private void SaveUserNameButton_Click(object sender, RoutedEventArgs e)
         {
             var newUserName = UserNameTextBox.Text.Trim();
 
@@ -67,41 +112,6 @@ namespace MayaGameLauncher.View
 
                 MessageBox.Show("Имя пользователя успешно обновлено.");
             }
-
-            var newPassword = NewPasswordBox.Password;
-
-            // Проверка нового пароля на минимальную длину
-            if (newPassword.Length < 6)
-            {
-                MessageBox.Show("Пароль должен быть длиннее 5 символов.");
-                return;
-            }
-
-            if (user != null)
-            {
-                // Проверка, что новый пароль отличается от текущего
-                if (user.Password == newPassword)
-                {
-                    MessageBox.Show("Новый пароль должен отличаться от старого.");
-                    return;
-                }
-
-                // Запрос подтверждения на изменение пароля
-                var result = MessageBox.Show("Вы точно хотите сменить пароль?", "Подтверждение смены пароля", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
-                {
-                    // Обновление пароля пользователя
-                    user.Password = newPassword;
-                    ClassHelper.EF.Context.SaveChanges();
-                    MessageBox.Show("Пароль успешно изменен.");
-                }
-                else
-                {
-                    // Пользователь отменил смену пароля
-                    MessageBox.Show("Смена пароля отменена.");
-                }
-            }
-
         }
     }
 }
