@@ -41,6 +41,7 @@ namespace MayaGameLauncher.View
         private void Btn_Buy(object sender, RoutedEventArgs e)
         {
             var selectedGame = LvStore.SelectedItem as Game;
+            var user = ClassHelper.EF.Context.User.FirstOrDefault(u => u.ID == SessionInfo.CurrentUserID);
             if (selectedGame == null)
             {
                 MessageBox.Show("Выберите игру!");
@@ -60,6 +61,7 @@ namespace MayaGameLauncher.View
 
             if (SessionInfo.CurrentBalance >= price)
             {
+                user.UserBalance = user.UserBalance - price;
                 SessionInfo.CurrentBalance -= price; // Это вызовет событие
                 MessageBox.Show("Игра была успешно куплена!");
 
