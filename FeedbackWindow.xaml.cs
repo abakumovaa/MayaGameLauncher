@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MayaGameLauncher.ClassHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,32 @@ namespace MayaGameLauncher
             CmbCategory.ItemsSource = ClassHelper.EF.Context.CategoryFeedback.ToList();
             CmbCategory.DisplayMemberPath = "Title";
             CmbCategory.SelectedIndex = 0;
+        }
+
+        private void FeedbackButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(UserNameTextBox.Text))
+            {
+                MessageBox.Show("Заполните поле фидбека");
+                return;
+            }
+
+            // добавление данных в бд
+
+            DB.Feedback addFeedback = new DB.Feedback
+            {
+                UserID = SessionInfo.CurrentUserID,
+                FeedbackDate = DateTime.Now,
+                FeedbackText = UserNameTextBox.Text,
+                CategoryID = (CmbCategory.SelectedItem as DB.CategoryFeedback).ID
+            };
+
+            ClassHelper.EF.Context.Feedback.Add(addFeedback);
+            ClassHelper.EF.Context.SaveChanges();
+
+            MessageBox.Show("Ваше сообщение было успешно отправлено!");
+            this.Close();
         }
     }
 }
