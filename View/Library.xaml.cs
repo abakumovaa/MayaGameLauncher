@@ -55,7 +55,7 @@ namespace MayaGameLauncher.View
 
         private void Btn_Download(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Скачивание игры...");
         }
 
     }
