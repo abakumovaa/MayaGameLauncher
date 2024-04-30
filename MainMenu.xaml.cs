@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MayaGameLauncher.ViewModel;
+using System.IO;
 
 namespace MayaGameLauncher
 {
@@ -29,6 +30,7 @@ namespace MayaGameLauncher
         public MainMenu()
         {
             InitializeComponent();
+            LoadUserImage();
 
             //mediaPlayer.Open(new Uri("Sources/soundtrack.mp3", UriKind.Relative));
             //mediaPlayer.MediaEnded += (s, e) => mediaPlayer.Position = TimeSpan.Zero; // Добавление саундтрека
@@ -53,6 +55,22 @@ namespace MayaGameLauncher
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private void LoadUserImage()
+        {
+            // Имитация получения текущего пользователя, его ID берется из SessionInfo
+            var user = ClassHelper.EF.Context.User.FirstOrDefault(u => u.ID == SessionInfo.CurrentUserID);
+            if (user != null && !string.IsNullOrEmpty(user.PhotoPath) && File.Exists(user.PhotoPath))
+            {
+                var bitmap = new BitmapImage(new Uri(user.PhotoPath));
+                Img.ImageSource = bitmap; // Убедитесь, что Img корректно связан с вашим ImageBrush в XAML
+            }
+            else
+            {
+                // Загрузите изображение по умолчанию, если пользовательское изображение недоступно
+                Img.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Sources/user.png"));
             }
         }
 
@@ -81,8 +99,15 @@ namespace MayaGameLauncher
             if (openFileDialog.ShowDialog() == true)
             {
                 Img.ImageSource = new BitmapImage(new Uri(openFileDialog.FileName));
-
                 pathImage = openFileDialog.FileName;
+
+                // Сохраняем путь к изображению в базе данных для текущего пользователя
+                var user = ClassHelper.EF.Context.User.FirstOrDefault(u => u.ID == SessionInfo.CurrentUserID);
+                if (user != null)
+                {
+                    user.PhotoPath = pathImage;
+                    ClassHelper.EF.Context.SaveChanges();
+                }
             }
         }
 

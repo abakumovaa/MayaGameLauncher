@@ -4,6 +4,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
+using System;
+using System.IO;
 
 namespace MayaGameLauncher.Pages
 {
@@ -55,18 +58,32 @@ namespace MayaGameLauncher.Pages
 
         private void Auth(object sender, RoutedEventArgs e)
         {
-            var userAuth = ClassHelper.EF.Context.User.ToList().Where(i => i.Email == tb1.Text && i.Password == tb2.Password).FirstOrDefault();
-
+            var userAuth = ClassHelper.EF.Context.User.FirstOrDefault(u => u.Email == tb1.Text && u.Password == tb2.Password);
             if (userAuth != null)
             {
                 SessionInfo.CurrentUserName = userAuth.UserName;
                 SessionInfo.CurrentUserID = userAuth.ID;
                 SessionInfo.CurrentBalance = (decimal)userAuth.UserBalance;
 
-                MainMenu mainMenu = new MainMenu();
-                mainMenu.Show();
-            }
+                // Проверяем, есть ли сохраненный путь к изображению
+                if (!string.IsNullOrEmpty(userAuth.PhotoPath) && File.Exists(userAuth.PhotoPath))
+                {
+                    // Загрузка и установка пользовательского изображения
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        MainMenu mainMenu = Application.Current.Windows.OfType<MainMenu>().FirstOrDefault();
+                        if (mainMenu != null)
+                        {
+                            BitmapImage bitmap = new BitmapImage(new Uri(userAuth.PhotoPath));
+                            mainMenu.Img.ImageSource = bitmap;  // Обновляем ImageSource у ImageBrush, который используется в Ellipse
+                        }
+                    });
+                }
 
+                // Отображаем MainMenu или продолжаем с текущим
+                MainMenu mainMenuToShow = Application.Current.Windows.OfType<MainMenu>().FirstOrDefault() ?? new MainMenu();
+                mainMenuToShow.Show();
+            }
             else
             {
                 MessageBox.Show("Данный пользователь не найден в базе данных. Пожалуйста, попробуйте ввести данные еще раз", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
