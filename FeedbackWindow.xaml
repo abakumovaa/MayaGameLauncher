@@ -58,6 +58,16 @@ TextElement.Foreground="{TemplateBinding Foreground}"/>
     Margin="28,38,0,0" Background="#FF785E88"/>
 
         <TextBox x:Name="UserNameTextBox" VerticalAlignment="Top" HorizontalAlignment="Left"
-          Margin="110,100,0,0" Width="300" Height="180" Style="{StaticResource TB}"/>
+          Margin="110,100,0,0" Width="300" Height="140" Style="{StaticResource TB}"/>
+
+        <TextBlock Text="Выберите категорию: "
+                    Foreground="White"
+                    FontSize="15"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontFamily="/Fonts/#Rubik Medium"
+                   Background="#FF785E88"
+                    Margin="30,278,0,0"/>
+
     </Grid>
 </Window>
