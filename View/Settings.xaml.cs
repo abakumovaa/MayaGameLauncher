@@ -113,5 +113,11 @@ namespace MayaGameLauncher.View
                 MessageBox.Show("Имя пользователя успешно обновлено.");
             }
         }
+
+        private void FeedbackButton_Click(object sender, RoutedEventArgs e)
+        {
+            FeedbackWindow feedbackWindow = new FeedbackWindow();
+            feedbackWindow.Show();
+        }
     }
 }
