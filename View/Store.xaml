@@ -20,6 +20,58 @@
             </Border.Background>
         </Border>
 
+        <ListView x:Name="LvService" 
+                  Background="#07000000"
+                  BorderThickness="0 2 0 2"
+                  d:ItemsSource="{d:SampleData ItemCount=5}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2" Margin="0,0,0,0"
+                  SelectionChanged="LvService_SelectionChanged" BorderBrush="#FBFFFFFF" Foreground="Black">
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Gray"
+                            BorderThickness="2"
+                            Width="250"
+                            Height="350"
+                            Margin="16"
+                            CornerRadius="8" Background="White">
+                        <StackPanel>
+                            <Image Height="180"
+                                   Width="174" 
+                                   Margin="8">
+                                <Image.Source>
+                                    <Binding Path ="ImagePath">
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+
+                            <TextBlock Text="{Binding Title}"
+                                       FontSize="12"
+                                       FontFamily="Krona One"
+                                       Margin="5 3"/>
+                            <TextBlock Text="{Binding Cost}"
+                                       FontSize="12"
+                                       Margin="5 3"/>
+                            <TextBlock Text="{Binding Description}"
+                                       FontSize="12"
+                                       Margin="5 3"
+                                       TextWrapping="Wrap" FontFamily="Krona One"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+
+
+
         <Grid>
             <TextBlock Text="Игра в магазине: "
                    Foreground="Black"
