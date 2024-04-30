@@ -131,40 +131,6 @@ TextElement.Foreground="{TemplateBinding Foreground}"/>
                  115,7,
                  249,7
                  257,0"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Image Name="MinButton" Height="12" Width="12" Margin="5" MouseDown="MinButton_MouseDown">
-                    <Image.Style>
-                        <Style TargetType="{x:Type Image}">
-                            <Setter Property="Source" Value="/Sources/черта_неактивная2.png"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=MinButton}"
-                                             Value="True">
-                                    <Setter Property="Source" Value="/Sources/черта_активная2.png"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Image.Style>
-                    <Image.Effect>
-                        <BlurEffect Radius="1"></BlurEffect>
-                    </Image.Effect>
-                </Image>
-                <Image Name="ExitButton" Height="12" Width="12" Margin="5 5 10 5" MouseDown="ExitButton_MouseDown">
-                    <Image.Style>
-                        <Style TargetType="{x:Type Image}">
-                            <Setter Property="Source" Value="/Sources/крест_неактивный2.png"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=ExitButton}"
-                                             Value="True">
-                                    <Setter Property="Source" Value="/Sources/крест_активный2.png"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Image.Style>
-                    <Image.Effect>
-                        <BlurEffect Radius="1"></BlurEffect>
-                    </Image.Effect>
-                </Image>
-            </StackPanel>
         </Grid>
         <Grid Name="LogoContainer" Background="Transparent" Grid.Row="1" MouseDown="LogoContainer_MouseDown">
             <Image Source="/Sources/maya.png">
