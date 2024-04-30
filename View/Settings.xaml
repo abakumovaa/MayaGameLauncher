@@ -156,7 +156,7 @@ TextElement.Foreground="{TemplateBinding Foreground}"/>
                      Margin="228,258,0,0" Width="250" Height="25" Style="{StaticResource PB}"/>
 
 
-            <Border Name="BtnSaveUserName" Grid.Column="0" Height="20" Width="125" Margin="340,0,0,180"
+            <Border Name="BtnSaveUserName" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="0" Height="20" Width="125" Margin="340,200,0,0"
 BorderThickness="1" Background="#FF0E3A59">
                 <Border.Style>
                     <Style TargetType="{x:Type Border}">
@@ -225,12 +225,7 @@ BorderThickness="1" Background="#FF0E3A59">
             </Border>
 
 
-
-
-
-
-
-            <Border Name="BtnSavePassword" Grid.Column="0" Height="20" Width="115" Margin="340,0,0,60"
+            <Border Name="BtnSavePassword" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="0" Height="20" Width="115" Margin="340,260,0,0"
 BorderThickness="1" Background="#FF0E3A59">
                 <Border.Style>
                     <Style TargetType="{x:Type Border}">
