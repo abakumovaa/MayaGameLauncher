@@ -29,7 +29,8 @@ namespace MayaGameLauncher.View
 
         private void LoadFavoriteGames()
         {
-            LvFavorite.ItemsSource = GetCurrentUserFavoriteGames();
+            var favoriteGamesList = GetCurrentUserFavoriteGames();
+            LvFavorite.ItemsSource = favoriteGamesList; // Привязка данных к ListView
         }
 
         private List<GameModel> GetCurrentUserFavoriteGames()
@@ -41,7 +42,8 @@ namespace MayaGameLauncher.View
                 {
                     Title = game.Title,
                     Description = game.Description,
-                    PcRequirements = game.PcRequirements
+                    PcRequirements = game.PcRequirements,
+                    GamePoster = game.GamePoster
                 })
                 .ToList();
         }

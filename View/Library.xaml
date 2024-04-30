@@ -84,14 +84,6 @@
                                Style="{StaticResource Text_Style}"
                                Foreground="White"/>
 
-                            <TextBlock Text="{Binding Price}"
-                               FontSize="15"
-                               FontWeight="SemiBold"
-                               Margin="-5"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                               Style="{StaticResource Text_Style}"
-                                Foreground="White"/>
                             <TextBlock Text="{Binding Description}"
                                FontSize="12"
                                TextAlignment="Center"
