@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MayaGameLauncher.View"
              xmlns:vm="clr-namespace:MayaGameLauncher.ViewModel"
          mc:Ignorable="d" 
-            d:DesignHeight="600" d:DesignWidth="622" Style="{StaticResource Page_Style}">
+            d:DesignHeight="600" d:DesignWidth="800" Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
         <vm:SettingVM/>
     </UserControl.DataContext>
@@ -14,7 +14,7 @@
 
     <UserControl.Resources>
         <Style x:Key="TB" TargetType="TextBox">
-            <Setter Property="Background" Value="#FF1E1F2D"/>
+            <Setter Property="Background" Value="#FF11141A"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Height" Value="35"/>
             <Setter Property="Foreground" Value="White"/>
@@ -47,8 +47,6 @@ TextElement.Foreground="{TemplateBinding Foreground}"/>
             </Setter>
         </Style>
     </UserControl.Resources>
-
-
 
 
     <Grid>
@@ -109,10 +107,11 @@ TextElement.Foreground="{TemplateBinding Foreground}"/>
                 FontFamily="/Fonts/#Rubik Medium"
                 Margin="28,198,0,0"/>
 
-            <TextBox x:Name="UserNameTextBox" Margin="70 0 0 180" Width="250" Height="25" Style="{StaticResource TB}" />
+            <TextBox x:Name="UserNameTextBox" VerticalAlignment="Top" HorizontalAlignment="Left"
+                     Margin="228,198,0,0" Width="250" Height="25" Style="{StaticResource TB}"/>
 
 
-            <Border Name="BtnSave" Grid.Column="0" Height="20" Width="75" Margin="80 60 0 0"
+            <Border Name="BtnSave" Grid.Column="0" Height="20" Width="75" Margin="650 510 0 0"
 BorderThickness="1" Background="#FF0E3A59">
                 <Border.Style>
                     <Style TargetType="{x:Type Border}">
