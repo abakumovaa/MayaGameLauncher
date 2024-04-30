@@ -56,16 +56,16 @@
                             CornerRadius="20"
                             BorderThickness="2"
                             Width="340"
-                            Height="350"
+                            Height="370"
                             Margin="15">
                         <Border.Background>
                             <ImageBrush ImageSource="/Sources/back.jpg"
                                 Stretch="None"/>
                         </Border.Background>
                         <StackPanel>
-                            <Image Height="210"
-                                   Width="257" 
-                                   Margin="8">
+                            <Image Height="207"
+                                   Width="250" 
+                                   Margin="10">
                                 <Image.Source>
                                     <Binding Path ="GamePoster">
                                     </Binding>
