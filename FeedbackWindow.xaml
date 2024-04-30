@@ -41,21 +41,21 @@ TextElement.Foreground="{TemplateBinding Foreground}"/>
                 </Setter.Value>
             </Setter>
         </Style>
-        </Window.Resources>
-    
-     <Window.Background>
+    </Window.Resources>
+
+    <Window.Background>
         <ImageBrush ImageSource="/Sources/feed_back.png"/>
     </Window.Background>
-    
-    
+
+
     <Grid>
         <Grid Name="ToolBar" Background="Transparent" Grid.Row="0" MouseDown="ToolBar_MouseDown">
-            <Polygon Fill="White" Opacity="0.2" HorizontalAlignment="Center" Margin="0 0 100 0"
+            <Polygon Fill="White" Opacity="0.2" HorizontalAlignment="Center"
 Points="107,0,
          115,7,
          249,7
-         257,0"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,427">
+         257,0" Width="326"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,415">
                 <Image Name="MinButton" Height="12" Width="12" Margin="5" MouseDown="MinButton_MouseDown">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">

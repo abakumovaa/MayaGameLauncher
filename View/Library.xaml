@@ -45,7 +45,7 @@
           d:ItemsSource="{d:SampleData ItemCount=5}"
           Style="{StaticResource ListViewHiddenScrollbar}"
           Grid.ColumnSpan="2" Margin="0,0,0,0"
-          SelectionChanged="LvFavorite_SelectionChanged" BorderBrush="#FBFFFFFF" Foreground="Black">
+          SelectionChanged="LvFavorite_SelectionChanged" Foreground="Black" BorderBrush="{x:Null}">
 
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
