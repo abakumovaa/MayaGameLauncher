@@ -53,15 +53,32 @@
 
                             <TextBlock Text="{Binding Title}"
                                        FontSize="12"
-                                       FontFamily="Krona One"
+                                       FontFamily="/#Rubik Medium"
                                        Margin="5 3"/>
-                            <TextBlock Text="{Binding Cost}"
+                            <TextBlock Text="{Binding Price}"
                                        FontSize="12"
                                        Margin="5 3"/>
                             <TextBlock Text="{Binding Description}"
                                        FontSize="12"
                                        Margin="5 3"
-                                       TextWrapping="Wrap" FontFamily="Krona One"/>
+                                       TextWrapping="Wrap" FontFamily="/#Rubik Medium"/>
+
+                            <TextBlock Text="{Binding ReleaseDate}"
+                                FontSize="12"
+                                Margin="5 3"
+                                TextWrapping="Wrap" FontFamily="/#Rubik Medium"/>
+
+                            <TextBlock Text="{Binding PcRequirements}"
+                                        FontSize="12"
+                                        Margin="5 3"
+                                        TextWrapping="Wrap" FontFamily="/#Rubik Medium"/>
+
+                            <TextBlock Text="{Binding Rating}"
+                                        FontSize="12"
+                                         Margin="5 3"
+                                         TextWrapping="Wrap" FontFamily="/#Rubik Medium"/>
+
+
                         </StackPanel>
                     </Border>
                 </DataTemplate>

@@ -23,6 +23,7 @@ namespace MayaGameLauncher.View
         public Store()
         {
             InitializeComponent();
+            GetListService();
         }
 
         private void GetListService()
