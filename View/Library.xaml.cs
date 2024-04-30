@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MayaGameLauncher.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,26 @@ namespace MayaGameLauncher.View
         public Library()
         {
             InitializeComponent();
+            LoadFavoriteGames();
+        }
+
+        private void LoadFavoriteGames()
+        {
+            LvFavorite.ItemsSource = GetCurrentUserFavoriteGames();
+        }
+
+        private List<GameModel> GetCurrentUserFavoriteGames()
+        {
+            return ClassHelper.EF.Context.FavoriteGame
+                .Where(fg => fg.UserID == ClassHelper.SessionInfo.CurrentUserID)
+            .Select(fg => fg.Game)
+                .Select(game => new GameModel
+                {
+                    Title = game.Title,
+                    Description = game.Description,
+                    PcRequirements = game.PcRequirements
+                })
+                .ToList();
         }
     }
 }
