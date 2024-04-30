@@ -35,7 +35,8 @@ namespace MayaGameLauncher
             //mediaPlayer.Play();
 
             Tb_UserName.Text = SessionInfo.CurrentUserName;
-            Tb_Balance_Amount.Text = SessionInfo.CurrentBalance.ToString();
+            Tb_Balance_Amount.Text = SessionInfo.CurrentBalance.ToString(); // удалить?
+            SessionInfo.OnBalanceChanged += SessionInfo_OnBalanceChanged;
 
             currentUserFriends = ClassHelper.EF.Context.UserFriend
             .Where(uf => uf.UserID == SessionInfo.CurrentUserID) // Фильтруем друзей текущего пользователя
@@ -54,11 +55,17 @@ namespace MayaGameLauncher
             }
         }
 
-        //private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        //{
-        //    mediaPlayer.Volume = e.NewValue;
-        //}
+        private void Window_Closed(object sender, EventArgs e) // ??????????????????????????????????????????????????????????
+        {
+            SessionInfo.OnBalanceChanged -= SessionInfo_OnBalanceChanged;
+        }
 
+        private void SessionInfo_OnBalanceChanged(object sender, SessionInfo.BalanceChangedEventArgs e)
+        {
+            Dispatcher.Invoke(() => {
+                Tb_Balance_Amount.Text = e.NewBalance.ToString();
+            });
+        }
 
         private void Btn_Change_Img(object sender, RoutedEventArgs e)
         {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MayaGameLauncher.ClassHelper;
+using MayaGameLauncher.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,9 +38,54 @@ namespace MayaGameLauncher.View
 
         }
 
-        private void Btn_Buy(object sender, EventArgs e)
+        private void Btn_Buy(object sender, RoutedEventArgs e)
         {
-            
+            var selectedGame = LvStore.SelectedItem as Game;
+            if (selectedGame == null)
+            {
+                MessageBox.Show("Выберите игру!");
+                return;
+            }
+
+            // Проверка, куплена ли уже игра
+            bool isPurchased = ClassHelper.EF.Context.FavoriteGame.Any(fg => fg.GameID == selectedGame.ID && fg.UserID == SessionInfo.CurrentUserID);
+            if (isPurchased)
+            {
+                MessageBox.Show("Эта игра уже куплена!");
+                return;
+            }
+
+            // Проверка достаточности средств
+            decimal price = selectedGame.Price ?? 0m;  // Если Price равно null, используем 0
+
+            if (SessionInfo.CurrentBalance >= price)
+            {
+                SessionInfo.CurrentBalance -= price; // Это вызовет событие
+                MessageBox.Show("Игра была успешно куплена!");
+
+
+                // Добавление игры в избранное
+                var newFavorite = new FavoriteGame
+                {
+                    UserID = SessionInfo.CurrentUserID,
+                    GameID = selectedGame.ID
+                };
+                ClassHelper.EF.Context.FavoriteGame.Add(newFavorite);
+                ClassHelper.EF.Context.SaveChanges();
+
+                MessageBox.Show("Игра была успешно куплена!");
+
+                // Обновление списка избранных игр, если это необходимо
+                if (Application.Current.Windows.OfType<Library>().Any())
+                {
+                    var libraryWindow = Application.Current.Windows.OfType<Library>().FirstOrDefault();
+                    libraryWindow.LoadFavoriteGames();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Недостаточно средств для покупки!");
+            }
         }
     }
 }

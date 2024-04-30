@@ -27,7 +27,7 @@ namespace MayaGameLauncher.View
             LoadFavoriteGames();
         }
 
-        private void LoadFavoriteGames()
+        public void LoadFavoriteGames()
         {
             var favoriteGamesList = GetCurrentUserFavoriteGames();
             LvFavorite.ItemsSource = favoriteGamesList; // Привязка данных к ListView
