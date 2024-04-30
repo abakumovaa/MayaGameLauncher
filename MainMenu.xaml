@@ -91,7 +91,7 @@ TextElement.Foreground="{TemplateBinding Foreground}"/>
                             <Image Source="/Sources/heart.png"
                                    Style="{StaticResource Image_Style}"/>
 
-                            <TextBlock Text="Избранное"
+                            <TextBlock Text="Библиотека"
                                        Style="{StaticResource Text_Style}"/>
                         </Grid>
 
