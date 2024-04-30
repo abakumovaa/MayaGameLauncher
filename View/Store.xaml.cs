@@ -24,5 +24,15 @@ namespace MayaGameLauncher.View
         {
             InitializeComponent();
         }
+
+        private void GetListService()
+        {
+            LvService.ItemsSource = ClassHelper.EF.Context.Game.ToList();
+        }
+
+        private void LvService_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
