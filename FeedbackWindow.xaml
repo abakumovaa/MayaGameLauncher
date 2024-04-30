@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="FeedbackWindow" Height="450" Width="500" WindowStartupLocation="CenterScreen">
     <Window.Background>
-        <ImageBrush ImageSource="/Sources/back.jpg"/>
+        <ImageBrush ImageSource="/Sources/feed_back.png"/>
     </Window.Background>
     <Grid>
         

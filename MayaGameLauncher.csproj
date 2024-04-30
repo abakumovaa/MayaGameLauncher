@@ -314,6 +314,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Sources\feed_back.png" />
     <Content Include="Sources\soundtrack.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
