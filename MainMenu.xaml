@@ -49,6 +49,25 @@ TextElement.Foreground="{TemplateBinding Foreground}"/>
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="ListViewHiddenScrollbar" TargetType="ListView">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListView">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                         BorderThickness="{TemplateBinding BorderThickness}" 
+                         Background="{TemplateBinding Background}">
+                            <ScrollViewer Focusable="false"
+                                   HorizontalScrollBarVisibility="Hidden" 
+                                   VerticalScrollBarVisibility="Hidden">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Window.Resources>
 
     <Grid>
@@ -198,7 +217,7 @@ TextElement.Foreground="{TemplateBinding Foreground}"/>
                     </TextBlock.Style>
                 </TextBlock>
 
-                <ListView Background="#FF272B2F" Grid.Row="1" x:Name="FriendList" Margin="0,0,0,100" BorderBrush="{x:Null}" Foreground="White">
+                <ListView Background="#FF272B2F" Style="{StaticResource ListViewHiddenScrollbar}" Grid.Row="1" x:Name="FriendList" Margin="0,0,0,100" BorderBrush="{x:Null}" Foreground="White">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Width="400">
