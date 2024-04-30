@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:MayaGameLauncher.ViewModel"
+                    xmlns:view="clr-namespace:MayaGameLauncher.View">
+    <DataTemplate DataType="{x:Type vm:HomeVM}">
+        <view:Home/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:LibraryVM}">
+        <view:Library/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:StoreVM}">
+        <view:Store/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:SettingVM}">
+        <view:Settings/>
+    </DataTemplate>
+</ResourceDictionary>

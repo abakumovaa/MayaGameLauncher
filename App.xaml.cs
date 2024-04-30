@@ -1,0 +1,25 @@
+﻿using MayaGameLauncher.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
+
+namespace MayaGameLauncher
+{
+    /// <summary>
+    /// Логика взаимодействия для App.xaml
+    /// </summary>
+    public partial class App : Application
+    {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            var mediaPlayer = MediaPlayerService.Instance;  // Только здесь активируется создание сервиса
+            mediaPlayer.Volume = mediaPlayer.Volume;  // Простое присвоение для подтверждения эффекта
+            mediaPlayer.Play();  // Явный запуск воспроизведения
+        }
+    }
+}
