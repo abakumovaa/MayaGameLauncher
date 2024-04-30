@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MayaGameLauncher"
         mc:Ignorable="d"
-        Title="FeedbackWindow" Height="450" Width="500" WindowStartupLocation="CenterScreen">
+        Title="FeedbackWindow" Height="450" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
     <Window.Resources>
         <Style x:Key="TB" TargetType="TextBox">
@@ -49,6 +49,47 @@ TextElement.Foreground="{TemplateBinding Foreground}"/>
     
     
     <Grid>
+        <Grid Name="ToolBar" Background="Transparent" Grid.Row="0" MouseDown="ToolBar_MouseDown">
+            <Polygon Fill="White" Opacity="0.2" HorizontalAlignment="Center" Margin="0 0 100 0"
+Points="107,0,
+         115,7,
+         249,7
+         257,0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,427">
+                <Image Name="MinButton" Height="12" Width="12" Margin="5" MouseDown="MinButton_MouseDown">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="/Sources/черта_неактивная2.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=MinButton}"
+                                 Value="True">
+                                    <Setter Property="Source" Value="/Sources/черта_активная2.png"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                    <Image.Effect>
+                        <BlurEffect Radius="1"></BlurEffect>
+                    </Image.Effect>
+                </Image>
+                <Image Name="ExitButton" Height="12" Width="12" Margin="5 5 10 5" MouseDown="ExitButton_MouseDown">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="/Sources/крест_неактивный2.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=ExitButton}"
+                                 Value="True">
+                                    <Setter Property="Source" Value="/Sources/крест_активный2.png"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                    <Image.Effect>
+                        <BlurEffect Radius="1"></BlurEffect>
+                    </Image.Effect>
+                </Image>
+            </StackPanel>
+        </Grid>
         <TextBlock Text="Пожалуйста, оставьте свои пожелания ниже"
     Foreground="White"
     FontSize="20"
