@@ -22,6 +22,9 @@ namespace MayaGameLauncher
         public FeedbackWindow()
         {
             InitializeComponent();
+            CmbCategory.ItemsSource = ClassHelper.EF.Context.CategoryFeedback.ToList();
+            CmbCategory.DisplayMemberPath = "Title";
+            CmbCategory.SelectedIndex = 0;
         }
     }
 }
