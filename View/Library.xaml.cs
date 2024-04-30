@@ -45,5 +45,10 @@ namespace MayaGameLauncher.View
                 })
                 .ToList();
         }
+
+        private void LvFavorite_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
