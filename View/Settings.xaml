@@ -55,7 +55,6 @@ TextElement.Foreground="{TemplateBinding Foreground}"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="BorderBrush" Value="#FF2D333D"/>
             <Setter Property="Padding" Value="10,0,0,0"/>
-            <EventSetter Event="PasswordChanged" Handler="OnPasswordChanged"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="PasswordBox">
