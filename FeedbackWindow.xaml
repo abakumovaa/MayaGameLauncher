@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MayaGameLauncher"
         mc:Ignorable="d"
-        Title="FeedbackWindow" Height="450" Width="800">
+        Title="FeedbackWindow" Height="450" Width="500" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="/Sources/back.jpg"/>
+    </Window.Background>
     <Grid>
         
     </Grid>
