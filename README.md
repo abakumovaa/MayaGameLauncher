@@ -13,6 +13,12 @@
 
 Дополнительно так же в приложении присутствует музыкальное сопровождение и экран загрузки.
 
+![03-big-2](https://github.com/user-attachments/assets/dcbfdea3-da78-4b0f-af1a-b7869b78ef4f)
+
+![03-big-3](https://github.com/user-attachments/assets/3e753b3b-4fa9-47b1-9ce7-54fdd2e0f7c2)
+
+![03-big-4](https://github.com/user-attachments/assets/e9fe4ead-32ed-48d5-a2e5-6e93da35f366)
+
 Демонстрация работы приложения:
 
 https://github.com/user-attachments/assets/2b6b53a7-bb52-4cb7-8a28-3ff606db4560
